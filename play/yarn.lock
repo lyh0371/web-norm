@@ -2277,6 +2277,11 @@
   "resolved" "https://registry.npmmirror.com/bytes/-/bytes-3.1.2.tgz"
   "version" "3.1.2"
 
+"cac@^6.7.12":
+  "integrity" "sha512-rM7E2ygtMkJqD9c7WnFU6fruFcN3xe4FM5yUmgxhZzIKJk4uHl9U/fhwdajGFQbQuv43FAUo1Fe8gX/oIKDeSA=="
+  "resolved" "https://registry.npmjs.org/cac/-/cac-6.7.12.tgz"
+  "version" "6.7.12"
+
 "cacache@^12.0.2", "cacache@^12.0.3":
   "integrity" "sha512-a0tMB40oefvuInr4Cwb3GerbL9xTj1D5yg0T5xrjGCGyfvbxseIXX7BAO/u/hIXdafzOI5JC3wDwHyf24buOAQ=="
   "resolved" "https://registry.npmmirror.com/cacache/-/cacache-12.0.4.tgz"

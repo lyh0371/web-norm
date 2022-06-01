@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-import { a } from './src/a';
-console.log(a);
+import cliInit from './src/cli';
+cliInit();

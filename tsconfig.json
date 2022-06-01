@@ -66,6 +66,7 @@
 
     /* Advanced Options */
     "skipLibCheck": true,                           /* 跳过声明文件的类型检查 */
-    "forceConsistentCasingInFileNames": true        /* 进制对同一文件使用大小写不一致的引用 */
+    "forceConsistentCasingInFileNames": true,       /* 进制对同一文件使用大小写不一致的引用 */
+    "resolveJsonModule":true
   }
 }
