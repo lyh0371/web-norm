@@ -6,10 +6,13 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "web": "web-norm"
+    "web": "web-norm",
+    "prepare": "husky install"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {

@@ -11,6 +11,7 @@ const env = {
   isVue2: false,
   isVueCli: false,
   isWebpack: true,
+  isEslint: false,
 };
 
 type envKeys = keyof typeof env;
@@ -34,7 +35,7 @@ export const getEnv = (key: envKeys) => {
 export const getPackageJson = async (
   base: string = getEnv('base') as string
 ) => {
-  if (!(await pathExists(base, 'package.json'))) process.exit(0);
+  if (!(await pathExists('package.json'))) process.exit(0);
   const file = path.resolve(base, 'package.json');
   const json = fs.readJSON(file);
   return json;
@@ -42,7 +43,11 @@ export const getPackageJson = async (
 
 export const initProjectInfo = (pckJson: any) => {
   const deps = { ...pckJson.devDependencies, ...pckJson.dependencies };
-  if (deps['vue'] && checkVueVersion(deps['vue'])) {
+
+  if (deps['vue'] && checkVueVersion(deps['vue']) === 2) {
     setEnv('isVue2', true);
+  }
+  if (deps['eslint']) {
+    setEnv('isEslint', true);
   }
 };

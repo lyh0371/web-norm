@@ -17,6 +17,8 @@ const switchDebug = (debug: boolean) => {
  */
 const debugError = (msg: string) => {
   debugSwitch && log(chalk.bgBlueBright(`[web-norm]:`) + chalk.red(msg));
+  // 如果出错就退出
+  process.exit(0);
 };
 
 /**
