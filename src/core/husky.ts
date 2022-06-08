@@ -19,6 +19,11 @@ export const huskyInit = async () => {
   // 更改package
   let pkgJson = await getPackageJson();
   pkgJson.scripts['prepare'] = 'husky install';
+  pkgJson.scripts['pre-commit'] = 'lint-staged';
+  pkgJson.scripts['pre-commit'] = 'lint-staged';
+  pkgJson['lint-staged'] = {
+    '*.{js,ts,vue,jsx,tsx}': ['vue-cli-service lint'],
+  };
   fs.writeJsonSync(getpath('package.json'), pkgJson, { spaces: 2 });
   debugInfo('初始化 husky');
 

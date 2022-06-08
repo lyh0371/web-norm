@@ -6,8 +6,10 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "web": "web-norm",
-    "prepare": "husky install"
+    "web": "npm link web-norm && web-norm",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
+    "commit": "git add . && git-cz"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -16,11 +18,15 @@
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@commitlint/config-angular": "^17.0.0",
+    "@commitlint/cz-commitlint": "^17.0.0",
     "@vue/cli-plugin-babel": "~4.5.13",
     "@vue/cli-plugin-eslint": "~4.5.13",
     "@vue/cli-service": "~4.5.13",
     "babel-eslint": "^10.1.0",
     "cac": "^6.7.12",
+    "commitizen": "^4.2.4",
+    "cz-customizable": "^6.3.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
@@ -43,5 +49,15 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "lint-staged": {
+    "*.{js,ts,vue,jsx,tsx}": [
+      "vue-cli-service lint"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  }
 }

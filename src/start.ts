@@ -3,6 +3,7 @@ import { getPackageJson, initProjectInfo, getEnv } from './utils/env';
 import { debugError } from './utils/debug';
 import { eslintInit } from './core/eslint';
 import { huskyInit } from './core/husky';
+import { commitLintInit } from './core/commitlint';
 export const start = async (base: string) => {
   const pckJson = await getPackageJson(base);
   initProjectInfo(pckJson);
@@ -16,4 +17,5 @@ export const start = async (base: string) => {
   // TODO: 安装 hucky 并自动生成配置文件
   await huskyInit();
   // TODO: 生成.vscode 配置文件 支持自动格式化代码
+  await commitLintInit();
 };
