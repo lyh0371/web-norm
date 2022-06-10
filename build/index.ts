@@ -7,6 +7,7 @@ const buildInit = async () => {
   pkgJson['bin'] = {
     'web-norm': 'index.js',
   };
+  pkgJson['main'] = 'index.js';
   fs.outputFileSync(getpath('./dist/package.json'), JSON.stringify(pkgJson));
 };
 
