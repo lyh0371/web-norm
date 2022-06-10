@@ -1,7 +1,7 @@
 // import { loadJsonFile } from 'load-json-file';
 import path from 'path';
 import fs from 'fs-extra';
-import { pathExists, checkVueVersion } from './check';
+import { checkVueVersion } from './check';
 
 //
 const env = {
@@ -35,7 +35,7 @@ export const getEnv = (key: envKeys) => {
 export const getPackageJson = async (
   base: string = getEnv('base') as string
 ) => {
-  if (!(await pathExists('package.json'))) process.exit(0);
+  // if (!(await pathExists('package.json'))) process.exit(0);
   const file = path.resolve(base, 'package.json');
   const json = fs.readJSON(file);
   return json;
