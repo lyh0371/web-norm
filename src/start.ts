@@ -3,6 +3,7 @@ import { getPackageJson, initProjectInfo, getEnv } from './utils/env';
 import { debugError } from './utils/debug';
 import { eslintInit } from './core/eslint';
 import { huskyInit } from './core/husky';
+import { eslintignoreInit } from './core/eslintignore';
 import { commitLintInit } from './core/commitlint';
 export const start = async (base: string) => {
   const pckJson = await getPackageJson(base);
@@ -18,4 +19,6 @@ export const start = async (base: string) => {
   await huskyInit();
   // TODO: 生成.vscode 配置文件 支持自动格式化代码
   await commitLintInit();
+  // TODO: 添加eslint忽略文件
+  await eslintignoreInit();
 };

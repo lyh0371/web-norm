@@ -1,23 +1,27 @@
-import { getEnv } from '../utils/env';
-// import { checkNpmOrYarn } from '../utils/check';
-import { debugError, debugInfo } from '../utils/debug';
-// import spawn from 'cross-spawn';
+import fs from 'fs-extra';
+import { down } from '../utils/tool';
+import { getPackageJson } from '../utils/env';
+import { prettierrcInit } from '../templet/prettierrc';
+import { eslintrcInit } from '../templet/eslintrc';
+import { getpath } from '../utils/path';
+
+const devDependencies = [
+  'eslint',
+  'prettier',
+  'eslint-friendly-formatter',
+  'eslint-config-prettie',
+  'eslint-plugin-prettier',
+  'eslint-plugin-vue',
+  'eslint-plugin-html',
+  'plugin:prettier/recommended',
+];
 export const eslintInit = async () => {
-  if (!getEnv('isEslint')) {
-    debugError('你未安装eslint，请先按照eslint');
-    debugInfo('vue2项目可以使用 vue add eslint 进行按照');
-    return false;
+  await down(devDependencies, '-D');
+  fs.outputFileSync(getpath('./.eslintrc.js'), eslintrcInit);
+  fs.outputFileSync(getpath('./.prettierrc'), prettierrcInit);
+  let pkgJson = await getPackageJson();
+  if (pkgJson['eslintConfig']) {
+    delete pkgJson.eslintConfig;
   }
-
-  // const basePath = getEnv('base') as string;
-  // const res = await checkNpmOrYarn(basePath);
-  // const [sname, spaw] = res;
-  // const ps = spawn.sync(sname, [spaw, 'eslint'], {
-  //   stdio: 'ignore',
-  //   cwd: basePath,
-  // });
-
-  // console.log(ps);
-
-  // debugInfo('eslint 安装成功');
+  fs.writeJsonSync(getpath('package.json'), pkgJson, { spaces: 2 });
 };

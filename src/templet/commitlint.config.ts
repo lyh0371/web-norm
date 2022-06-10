@@ -1,8 +1,9 @@
-export const commitLintConfig = {
+export const commitLintConfig = `
+module.exports={
   extends: ['@commitlint/config-angular'],
   parserPreset: {
     parserOpts: {
-      headerPattern: /^(.*?)(?:\((.*)\))?:?\s(.*)$/,
+      headerPattern: /^(.*?)(?:\\((.*)\\))?:?\\s(.*)$/,
       headerCorrespondence: ['type', 'scope', 'subject'],
     },
   },
@@ -127,4 +128,4 @@ export const commitLintConfig = {
       },
     },
   },
-};
+}`;

@@ -4,16 +4,30 @@
 import { getPackageJson } from '../utils/env';
 import { down, run } from '../utils/tool';
 import fs from 'fs-extra';
-import { commitLintConfig } from '../utils/commitlint.config';
+import { commitLintConfig } from '../templet/commitlint.config';
 import { getpath } from '../utils/path';
 
 const devDependencies = [
-  ' @commitlint/cli',
+  '@commitlint/cli',
   '@commitlint/config-angular',
   'commitizen',
   'cz-customizable',
   '@commitlint/cz-commitlint',
 ];
+
+const commitMsg = `#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx --no-install commitlint --edit $1
+`;
+
+const preCommit = `
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+npm run pre-commit
+`;
+
+const commitlintPath = getpath('commitlint.config.js');
 
 export const commitLintInit = async () => {
   await down(devDependencies, '-D');
@@ -27,8 +41,11 @@ export const commitLintInit = async () => {
   pkgJson.scripts['commit'] = 'git add . && git-cz';
   fs.writeJsonSync(getpath('package.json'), pkgJson, { spaces: 2 });
 
-  fs.outputFileSync(
-    getpath('commitlint.config.js'),
-    `module.exports=${JSON.stringify(commitLintConfig)}`
-  );
+  if (await fs.pathExists(commitlintPath)) {
+    // 删除
+    fs.removeSync(commitlintPath);
+  }
+  fs.outputFileSync(commitlintPath, commitLintConfig);
+  fs.outputFileSync(getpath('./.husky/commit-msg'), commitMsg);
+  fs.outputFileSync(getpath('./.husky/pre-commit'), preCommit);
 };
