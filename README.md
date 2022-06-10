@@ -1,10 +1,46 @@
 ## 初衷
 
-我们在公司做项目的时候会经手很多项目，有的项目配置的有自己的规范有的项目没有配置任何规范。当碰到没有配置规范的项目的时候总是需要把以前的项目规范都复制一遍到新项目中。
-这种操作其实也没什么不对，如果手速快的话大概十来分钟就可以解决，但是让人感觉很恶心
+每当接手一个新项目（如果项目中没有配置 eslint husky commitlint）等这些规范的话，就需要自己手动配置一遍，配置多了后我只能来句窝草！
 
-基于此希望可以简化部署规范的流程只要安装一个包就可以把所以 ESlint prettiet commit 提交规范等全部搞得，岂不美哉
+## 目标
 
-## 计划
+一个命令自动化配置项目所以规范
 
-因为现在公司的项目都是 vue2 的，所以还是先在 vue2 项目中实现
+## 使用
+
+1. 全局安装
+
+
+```sh
+npm install web-norm -g | yarn add web-norm -g | pnpm install web-norm -g
+```
+运行命令
+```sh
+npm run web-norm
+```
+
+2 局部安装
+
+```sh
+npm install web-norm -D | yarn add web-norm -D | pnpm install web-norm -D
+```
+在 package.json 中
+
+```sh
+ "scripts": {
+    "web": "web-norm",
+  },
+```
+运行命令
+
+```sh
+npm run web
+```
+
+## 验证
+
+运行命令
+
+```sh
+npm run commit
+```
