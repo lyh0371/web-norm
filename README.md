@@ -44,3 +44,7 @@ npm run web
 ```sh
 npm run commit
 ```
+
+## 自动化发布到 npm
+
+https://blog.csdn.net/weixin_43783363/article/details/117369151
