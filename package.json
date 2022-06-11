@@ -1,16 +1,16 @@
 {
   "name": "web-norm",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "前端项目规范一键安装",
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon  ./index.ts",
     "tsc": "tsc",
-    "publish": "ts-node build/publish.ts && git push",
     "build": "rm -rf dist && tsc && ts-node build/index.ts",
     "serve": "ts-node ./index.ts",
     "tsc-init": "tsc --init",
-    "commit": "git add . && git-cz",
+    "version": "ts-node build/version.ts",
+    "commit": "npm run version && git add . && git-cz ",
     "prepare": "husky install"
   },
   "bin": {
