@@ -6,6 +6,8 @@ const buildInit = async () => {
   pkgJson['bin'] = {
     'web-norm': 'index.js',
   };
+  // 去掉husky
+  delete pkgJson.scripts.prepare;
   pkgJson['main'] = 'index.js';
   fs.outputFileSync(getpath('./dist/package.json'), JSON.stringify(pkgJson));
 };
