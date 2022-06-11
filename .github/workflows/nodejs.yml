@@ -17,12 +17,8 @@ jobs:
        with:
         node-version: '16.x'
         registry-url: 'https://registry.npmjs.org'
-     - run: ls
+        path: dist
+     - run: ls && npm publish
        env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-     
-
-
-      
-          
