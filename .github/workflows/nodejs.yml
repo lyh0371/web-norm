@@ -8,22 +8,17 @@ jobs:
    steps:
      - name: Checkout
        uses: actions/checkout@v3
+     - name: setupNode
+       uses: actions/setup-node@v3
+       with:
+        node-version: '16.x'
+        registry-url: 'https://registry.npmjs.org'
      - name: 依赖安装
        run: npm install
      - name: 构建
        run: npm run build
-     - uses: actions/checkout@v3
-     - uses: actions/setup-node@v3
-       with:
-        node-version: '16.x'
-        registry-url: 'https://registry.npmjs.org'
-        path: dist
+     - run: cd ./dist
      - run: npm publish
        env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-     
-
-
-      
-          
