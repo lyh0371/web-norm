@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon  ./index.ts",
     "tsc": "tsc",
+    "publish": "ts-node build/publish.ts && git push",
     "build": "rm -rf dist && tsc && ts-node build/index.ts",
     "serve": "ts-node ./index.ts",
     "tsc-init": "tsc --init",
