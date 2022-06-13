@@ -10,6 +10,7 @@ const buildInit = async () => {
   delete pkgJson.scripts.prepare;
   pkgJson['main'] = 'index.js';
   fs.outputFileSync(getpath('./dist/package.json'), JSON.stringify(pkgJson));
+  fs.copyFileSync(getpath('./README.md'), './dist/README.md');
 };
 
 buildInit();

@@ -1,6 +1,6 @@
 {
   "name": "web-norm",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "前端项目规范一键安装",
   "main": "dist/index.js",
   "scripts": {
@@ -9,9 +9,10 @@
     "build": "rm -rf dist && tsc && ts-node build/index.ts",
     "serve": "ts-node ./index.ts",
     "tsc-init": "tsc --init",
-    "version": "ts-node build/version.ts",
+    "version": "ts-node build/version.ts --release",
     "commit": "npm run version && git add . && git-cz ",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "rm -rf dist && tsc && ts-node build/index.ts"
   },
   "bin": {
     "web-norm": "./dist/index.js"
@@ -45,6 +46,7 @@
     "cross-spawn": "^7.0.3",
     "cz-customizable": "^6.3.0",
     "husky": "^8.0.1",
+    "minimist": "^1.2.6",
     "nodemon": "^2.0.16",
     "rollup": "^2.75.6",
     "rollup-plugin-terser": "^7.0.2",
