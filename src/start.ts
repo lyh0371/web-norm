@@ -1,6 +1,6 @@
 // 开始分析项目
 import { getPackageJson, initProjectInfo, getEnv } from './utils/env';
-import { debugError } from './utils/debug';
+import { debugError, debugInfo } from './utils/debug';
 import { eslintInit } from './core/eslint';
 import { huskyInit } from './core/husky';
 import { eslintignoreInit } from './core/eslintignore';
@@ -21,4 +21,5 @@ export const start = async (base: string) => {
   await commitLintInit();
   // TODO: 添加eslint忽略文件
   await eslintignoreInit();
+  debugInfo('success!');
 };

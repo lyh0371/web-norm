@@ -1,6 +1,6 @@
 {
   "name": "web-norm",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "前端项目规范一键安装",
   "main": "dist/index.js",
   "scripts": {
@@ -41,7 +41,6 @@
     "@types/cross-spawn": "^6.0.2",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^17.0.35",
-    "cac": "^6.7.12",
     "commitizen": "^4.2.4",
     "cross-spawn": "^7.0.3",
     "cz-customizable": "^6.3.0",
@@ -54,6 +53,7 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
+    "cac": "^6.7.12",
     "chalk": "^4.0.1",
     "eslint": "^8.16.0",
     "fs-extra": "^10.1.0",

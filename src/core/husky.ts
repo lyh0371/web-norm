@@ -5,7 +5,7 @@ import { getpath } from '../utils/path';
 import { debugInfo, debugWarning } from '../utils/debug';
 import { pathExists } from '../utils/check';
 // 需要安装的依赖
-const devDependencies = ['husky', 'lint-staged', 'cac'];
+const devDependencies = ['husky', 'lint-staged'];
 
 export const huskyInit = async () => {
   // 检查是否有git 如果没有 需要先初始化git
