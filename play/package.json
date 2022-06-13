@@ -14,10 +14,11 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.0",
+    "lint-staged": "^13.0.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.2",
     "@commitlint/config-angular": "^17.0.0",
     "@commitlint/cz-commitlint": "^17.0.0",
     "@vue/cli-plugin-babel": "~4.5.13",
@@ -27,23 +28,13 @@
     "cac": "^6.7.12",
     "commitizen": "^4.2.4",
     "cz-customizable": "^6.3.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint": "^8.17.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^9.1.1",
+    "prettier": "^2.6.2",
     "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",
@@ -52,8 +43,9 @@
   ],
   "lint-staged": {
     "*.{js,ts,vue,jsx,tsx}": [
-      "vue-cli-service lint"
-    ]
+      "eslint --ext .js,.jsx,.ts,.tsx,.vue"
+    ],
+    "*.{js,jsx,ts,tsx,md,html,css,lees,scss,sass}": "prettier --write"
   },
   "config": {
     "commitizen": {

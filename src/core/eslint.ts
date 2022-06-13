@@ -14,6 +14,7 @@ const devDependencies = [
   'eslint-plugin-vue',
   'eslint-plugin-html',
   'plugin:prettier/recommended',
+  'eslint-config-prettier',
 ];
 export const eslintInit = async () => {
   await down(devDependencies, '-D');
