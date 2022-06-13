@@ -32,7 +32,7 @@ export const checkVueVersion = (version: string) => {
  */
 export const checkNpmOrYarn = async (_basePath?: string): Promise<string[]> => {
   // 如果原项目使用的是yarn进行安装的，那还是使用npm进行按照，否则就使用npm
-  if (await pathExists('yarn.lock')) {
+  if (await pathExists('yarn.lock', false)) {
     return ['yarn', 'add'];
   }
   return ['npm', 'init'];

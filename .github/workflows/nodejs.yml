@@ -1,7 +1,7 @@
 name: 发布npm
 on:
   push:
-    branches: [ master ]
+    branches: [ release ]
 jobs:
   build:
    runs-on: ubuntu-latest
