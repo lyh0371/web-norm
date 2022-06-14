@@ -6,16 +6,8 @@ import { huskyInit } from './core/husky';
 import { eslintignoreInit } from './core/eslintignore';
 import { commitLintInit } from './core/commitlint';
 import { vscodeInit } from './core/vscode';
-import { logger } from './utils/tool';
 export const start = async (base: string) => {
   const pckJson = await getPackageJson(base);
-  const loading = async () => {
-    return new Promise((resolve) => {
-      setTimeout(async () => {
-        resolve('success');
-      }, 1000);
-    });
-  };
 
   initProjectInfo(pckJson);
   // TODO: 分析package.json 1.查看项目类型
@@ -23,9 +15,11 @@ export const start = async (base: string) => {
     debugError('暂不支持除vue2之外的其他版本');
   }
   try {
-    await logger(loading(), '分析项目中');
+    debugprocess('开始分析项目，请稍等...');
     // TODO: 安装eslint 和 preitter 并自动生成配置文件
-    debugprocess('当前进度10%，请等待...');
+    setTimeout(() => {
+      debugprocess('当前进度10%，请等待...');
+    }, 3000);
     await eslintInit();
     debugprocess('当前进度30%，请等待...');
     // TODO: 安装 hucky 并自动生成配置文件
@@ -44,8 +38,7 @@ export const start = async (base: string) => {
 
   debugInfo('success!');
 
-  debugprocess(
-    `1. 请确保您使用编辑器是vscode
-     2. 推荐安装vscode插件 eslint、prettier`
-  );
+  debugprocess(`温馨提示：
+    1. 请确保您使用编辑器是vscode
+    2. 推荐安装vscode插件 eslint、prettier`);
 };

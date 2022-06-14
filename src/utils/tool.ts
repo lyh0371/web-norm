@@ -1,19 +1,17 @@
 import spawn from 'cross-spawn';
-import createLogger from 'progress-estimator';
-import { join } from 'path';
+
 import { getEnv } from './env';
 import { checkNpmOrYarn } from './check';
 import { debugInfo, debugWarning } from './debug';
-
 export const down = async (runName: string | string[], type: string) => {
   const basePath = getEnv('base') as string;
   const [n, i] = await checkNpmOrYarn(basePath);
   if (typeof runName === 'string') {
-    await logger(spawnSync(n, i, runName, type, basePath), runName);
+    await spawnSync(n, i, runName, type, basePath);
     return false;
   }
   runName.forEach(async (runItem) => {
-    await logger(spawnSync(n, i, runItem, type, basePath), runItem);
+    await spawnSync(n, i, runItem, type, basePath);
   });
 };
 
@@ -49,7 +47,3 @@ export const run = async (str: string) => {
     cwd: basePath,
   });
 };
-
-export const logger = createLogger({
-  storagePath: join(__dirname, '.progress-estimator'),
-});
