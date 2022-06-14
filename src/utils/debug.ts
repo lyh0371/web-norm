@@ -31,6 +31,15 @@ const debugInfo = (msg: string) => {
 };
 
 /**
+ * debug 强调
+ * @param type 类型
+ * @param msg 信息
+ */
+
+const debugprocess = (msg: string) => {
+  debugSwitch && log(chalk.bgBlueBright(`[web-norm]:`) + chalk.yellow(msg));
+};
+/**
  * debug warning信息
  * @param type 类型
  * @param msg 信息
@@ -39,4 +48,4 @@ const debugWarning = (msg: string) => {
   log(chalk.bgBlueBright(`[web-norm]:`) + chalk.yellow(msg));
 };
 
-export { switchDebug, debugInfo, debugError, debugWarning };
+export { switchDebug, debugInfo, debugError, debugWarning, debugprocess };

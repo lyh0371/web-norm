@@ -1,6 +1,6 @@
 // 开始分析项目
 import { getPackageJson, initProjectInfo, getEnv } from './utils/env';
-import { debugError, debugInfo } from './utils/debug';
+import { debugError, debugInfo, debugprocess } from './utils/debug';
 import { eslintInit } from './core/eslint';
 import { huskyInit } from './core/husky';
 import { eslintignoreInit } from './core/eslintignore';
@@ -25,22 +25,27 @@ export const start = async (base: string) => {
   try {
     await logger(loading(), '分析项目中');
     // TODO: 安装eslint 和 preitter 并自动生成配置文件
-    debugInfo('当前进度10%，请等待...');
+    debugprocess('当前进度10%，请等待...');
     await eslintInit();
-    debugInfo('当前进度30%，请等待...');
+    debugprocess('当前进度30%，请等待...');
     // TODO: 安装 hucky 并自动生成配置文件
     await huskyInit();
-    debugInfo('当前进度50%，请等待...');
+    debugprocess('当前进度50%，请等待...');
     // TODO: 生成.vscode 配置文件 支持自动格式化代码
     await commitLintInit();
-    debugInfo('当前进度80%，请等待...');
+    debugprocess('当前进度80%，请等待...');
     // TODO: 添加eslint忽略文件
     await eslintignoreInit();
-    debugInfo('当前进度100%，请等待...');
+    debugprocess('当前进度100%');
     await vscodeInit();
   } catch (error) {
     debugError(JSON.stringify(error));
   }
 
   debugInfo('success!');
+
+  debugprocess(
+    `1. 请确保您使用编辑器是vscode
+     2. 推荐安装vscode插件 eslint、prettier`
+  );
 };
