@@ -29,6 +29,7 @@ export const spawnSync = (
       stdio: 'pipe',
       cwd: basePath,
     });
+    debugInfo(`${runItem}✅`);
 
     resolve({ success: true });
   });

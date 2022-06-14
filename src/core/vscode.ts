@@ -9,8 +9,6 @@ export const vscodeInit = async () => {
     getpath('./vscode/settings.json')
   );
 
-  console.log('haveVscodeSetting', haveVscodeSetting);
-
   let vscodeSetting = {};
   if (!haveVscodeSetting) {
     vscodeSetting = {
