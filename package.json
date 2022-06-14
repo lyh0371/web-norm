@@ -1,6 +1,6 @@
 {
   "name": "web-norm",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "前端项目规范一键安装",
   "main": "dist/index.js",
   "scripts": {
@@ -48,6 +48,7 @@
     "husky": "^8.0.1",
     "minimist": "^1.2.6",
     "nodemon": "^2.0.16",
+    "progress-estimator": "^0.3.0",
     "rollup": "^2.75.6",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.32.1",
