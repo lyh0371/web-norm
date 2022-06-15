@@ -9,7 +9,7 @@
     "build": "rm -rf dist && tsc && ts-node build/index.ts",
     "serve": "ts-node ./index.ts",
     "tsc-init": "tsc --init",
-    "version": "ts-node build/version.ts --release",
+    "version": "ts-node build/version.ts",
     "commit": "npm run version && git add . && git-cz ",
     "prepare": "husky install",
     "release": "rm -rf dist && tsc && ts-node build/index.ts"
