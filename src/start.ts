@@ -17,9 +17,6 @@ export const start = async (base: string) => {
   try {
     debugprocess('开始分析项目，请稍等...');
     // TODO: 安装eslint 和 preitter 并自动生成配置文件
-    setTimeout(() => {
-      debugprocess('当前进度10%，请等待...');
-    }, 3000);
     await eslintInit();
     debugprocess('当前进度30%，请等待...');
     // TODO: 安装 hucky 并自动生成配置文件

@@ -37,6 +37,8 @@ npm install web-norm -D | yarn add web-norm -D | pnpm install web-norm -D
 npm run web
 ```
 
+<img src="./src/static/loading.png" width="60%">
+
 ## 验证
 
 运行命令
@@ -44,3 +46,5 @@ npm run web
 ```sh
 npm run commit
 ```
+
+<img src="./src/static/eslint.png" width="60%">
