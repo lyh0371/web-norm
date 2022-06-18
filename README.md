@@ -4,17 +4,18 @@
 
 ## 目标
 
-一个命令自动化配置项目所以规范
+一个命令自动化配置项目规范
 
 ## 使用
 
 1. 全局安装
 
-
 ```sh
 npm install web-norm -g | yarn add web-norm -g | pnpm install web-norm -g
 ```
+
 运行命令
+
 ```sh
 npm run web-norm
 ```
@@ -24,6 +25,7 @@ npm run web-norm
 ```sh
 npm install web-norm -D | yarn add web-norm -D | pnpm install web-norm -D
 ```
+
 在 package.json 中
 
 ```sh
@@ -31,6 +33,7 @@ npm install web-norm -D | yarn add web-norm -D | pnpm install web-norm -D
     "web": "web-norm",
   },
 ```
+
 运行命令
 
 ```sh

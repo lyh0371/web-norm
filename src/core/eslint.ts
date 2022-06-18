@@ -11,7 +11,7 @@ const devDependencies = [
   'eslint-friendly-formatter',
   'eslint-config-prettie',
   'eslint-plugin-prettier',
-  'eslint-plugin-vue',
+  'eslint-plugin-vue@6.2.2',
   'eslint-plugin-html',
   'plugin:prettier/recommended',
   'eslint-config-prettier',
