@@ -18,7 +18,6 @@ jobs:
      - name: 构建
        run: npm run build
      - run: cd ./dist && npm publish
-     
        env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
