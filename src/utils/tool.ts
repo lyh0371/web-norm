@@ -42,7 +42,7 @@ export const run = async (str: string) => {
   }
   const [npm, ...args] = runArr;
   spawn.sync(npm, args, {
-    stdio: pipe,
+    stdio: 'pipe',
     cwd: basePath,
   });
   debugInfo(`${runArr.join(' ')}✅`);
