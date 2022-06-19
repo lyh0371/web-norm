@@ -22,7 +22,7 @@ export const huskyInit = async () => {
   pkgJson.scripts['pre-commit'] = 'lint-staged';
   pkgJson.scripts['pre-commit'] = 'lint-staged';
   pkgJson['lint-staged'] = {
-    '*.{js,ts,vue,jsx,tsx}': ['eslint --ext .js,.jsx,.ts,.tsx,.vue'],
+    '*.{js,ts,vue,jsx,tsx}': ['vue-cli-service lint'],
     '*.{js,jsx,ts,tsx,md,html,css,lees,scss,sass}': 'prettier --write',
   };
   fs.writeJsonSync(getpath('package.json'), pkgJson, { spaces: 2 });
