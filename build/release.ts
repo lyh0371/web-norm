@@ -6,7 +6,7 @@ const tagInit = async () => {
   await run(`git tag v${version}`);
 
   // 提交代码
-  await run('git push');
+  await run('git push', 'inherit');
 };
 
 tagInit();

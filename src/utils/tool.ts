@@ -33,7 +33,7 @@ export const spawnSync = (
   });
 };
 
-export const run = async (str: string) => {
+export const run = async (str: string, stdio = 'pipe') => {
   const basePath = getEnv('base') as string;
   const runArr = str.split(' ');
   if (runArr.length < 2) {
@@ -41,9 +41,9 @@ export const run = async (str: string) => {
     return false;
   }
   const [npm, ...args] = runArr;
-  debugInfo(`${runArr.join(' ')}✅`);
   spawn.sync(npm, args, {
-    stdio: 'pipe',
+    stdio,
     cwd: basePath,
   });
+  debugInfo(`${runArr.join(' ')}✅`);
 };
