@@ -1,12 +1,16 @@
-import { run } from '../src/utils/tool';
 import { getPackageJson } from '../src/utils/env';
+import spawn from 'cross-spawn';
 const tagInit = async () => {
   const { version } = await getPackageJson();
   // 打tag
-  await run(`git tag v${version}`);
-
-  // 提交代码
-  await run('git push');
+  spawn.sync('git', ['tag', `v${version}`], {
+    stdio: 'inherit',
+    cwd: './',
+  });
+  spawn.sync('git', ['push'], {
+    stdio: 'inherit',
+    cwd: './',
+  });
 };
 
 tagInit();
