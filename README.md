@@ -51,3 +51,20 @@ npm run commit
 ```
 
 <img src="./src/static/eslint.png" width="60%">
+
+## 在老项目中使用
+
+在老项目使用会牵扯到一个问题就是以前的代码规范和通过`web-norm`生成的代码规范不一致怎么办？
+
+1、如果项目比较小，只有几个文件，你可以把所以的文件都保存一遍即可（保存的时候 vscode 会自动格式化代码，确保使用 vscode 编辑器并安装 eslint 和 pretter 插件）
+
+<img src="./src/static/Jun-20-2022-1.gif" width="60%">
+
+2、如果项目比较大，建议使用 vscode 插件`Format Files`进行自动化保存
+
+<img src="./src/static/Jun-20-2022-2.gif" width="60%">
+
+## 说明
+
+1、目前 `web-norm` 只支持 vue2 项目，后续会支持 vue3 react 项目
+2、在使用过程中遇到任何问题，请提交 issues
