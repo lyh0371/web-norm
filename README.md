@@ -62,7 +62,7 @@ npm run commit
 
 2、如果项目比较大，建议使用 vscode 插件`Format Files`进行自动化保存
 
-<img src="./src/static/Jun-20-2022-2.gif" width="60%">
+<img src="./src/static/Jun-20-2022-2.gif" width="100%">
 
 ## 说明
 
