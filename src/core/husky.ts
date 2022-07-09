@@ -20,9 +20,10 @@ export const huskyInit = async () => {
   let pkgJson = await getPackageJson();
   pkgJson.scripts['prepare'] = 'husky install';
   pkgJson.scripts['pre-commit'] = 'lint-staged';
-  pkgJson.scripts['pre-commit'] = 'lint-staged';
+  pkgJson.scripts['eslint'] =
+    'eslint --cache --max-warnings 0  "{src,mock}/**/*.{vue,ts,js,tsx}" --fix';
   pkgJson['lint-staged'] = {
-    '*.{js,ts,vue,jsx,tsx}': ['vue-cli-service lint'],
+    '*.{js,ts,vue,jsx,tsx}': ['npm run eslint'],
     '*.{js,jsx,ts,tsx,md,html,css,lees,scss,sass}': 'prettier --write',
   };
   fs.writeJsonSync(getpath('package.json'), pkgJson, { spaces: 2 });

@@ -41,13 +41,19 @@ export const getPackageJson = async (
   return json;
 };
 
-export const initProjectInfo = (pckJson: any) => {
+export const initProjectInfo = async (pckJson: any) => {
   const deps = { ...pckJson.devDependencies, ...pckJson.dependencies };
-
-  if (deps['vue'] && checkVueVersion(deps['vue']) === 2) {
+  if (deps['vue']) {
+    setEnv('isVue', true);
+  }
+  if (checkVueVersion(deps['vue']) === 2) {
     setEnv('isVue2', true);
+  }
+  if (checkVueVersion(deps['vue']) === 3) {
+    setEnv('isVue3', true);
   }
   if (deps['eslint']) {
     setEnv('isEslint', true);
   }
+  return true;
 };

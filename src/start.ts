@@ -9,10 +9,10 @@ import { vscodeInit } from './core/vscode';
 export const start = async (base: string) => {
   const pckJson = await getPackageJson(base);
 
-  initProjectInfo(pckJson);
+  await initProjectInfo(pckJson);
   // TODO: 分析package.json 1.查看项目类型
-  if (!getEnv('isVue2')) {
-    debugError('暂不支持除vue2之外的其他版本');
+  if (!getEnv('isVue')) {
+    debugError('暂不支持除Vue之外的其他版本');
   }
   try {
     debugprocess('开始分析项目，请稍等...');

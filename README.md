@@ -64,7 +64,16 @@ npm run commit
 
 <img src="./src/static/Jun-20-2022-2.gif" width="100%">
 
+## 可能遇到问题
+
+- husky 无法触发
+
+1. 可以删除依赖（node_modules）重新按照
+
+2. mac 电脑执行 `chmod 700 .husky/*` 让`.husky`文件有读写权限
+
 ## 说明
 
-1、目前 `web-norm` 只支持 vue2 项目，后续会支持 vue3 react 项目
-2、在使用过程中遇到任何问题，请提交 issues
+1. 目前 `web-norm` 只支持 vue2 项目，后续会支持 vue3 react 项目
+
+2. 在使用过程中遇到任何问题，请提交 issues
