@@ -5,7 +5,6 @@ import fs from 'fs-extra';
 import { getpath } from '../utils/path';
 
 const eslintignore = `
-.eslintrc.js
 .prettierrc
 commitlint.config.js
 .babel.config.js

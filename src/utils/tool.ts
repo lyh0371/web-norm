@@ -47,3 +47,9 @@ export const run = async (str: string) => {
   });
   debugInfo(`${runArr.join(' ')}✅`);
 };
+
+export const downNodeModules = async () => {
+  const basePath = getEnv('base') as string;
+  const [n] = await checkNpmOrYarn(basePath);
+  await run(`${n} install`);
+};

@@ -6,13 +6,14 @@ import { huskyInit } from './core/husky';
 import { eslintignoreInit } from './core/eslintignore';
 import { commitLintInit } from './core/commitlint';
 import { vscodeInit } from './core/vscode';
+import { downNodeModules } from './utils/tool';
 export const start = async (base: string) => {
   const pckJson = await getPackageJson(base);
 
-  initProjectInfo(pckJson);
+  await initProjectInfo(pckJson);
   // TODO: 分析package.json 1.查看项目类型
-  if (!getEnv('isVue2')) {
-    debugError('暂不支持除vue2之外的其他版本');
+  if (!getEnv('isVue')) {
+    debugError('暂不支持除Vue之外的其他版本');
   }
   try {
     debugprocess('开始分析项目，请稍等...');
@@ -27,6 +28,8 @@ export const start = async (base: string) => {
     debugprocess('当前进度80%，请等待...');
     // TODO: 添加eslint忽略文件
     await eslintignoreInit();
+    debugprocess('当前进度99%');
+    await downNodeModules();
     debugprocess('当前进度100%');
     await vscodeInit();
   } catch (error) {
