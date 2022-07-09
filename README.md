@@ -74,6 +74,6 @@ npm run commit
 
 ## 说明
 
-1. 目前 `web-norm` 只支持 vue2 项目，后续会支持 vue3 react 项目
+1. 目前 `web-norm` 只支持 vue（包括 vue3） 后续会支持 react 项目
 
 2. 在使用过程中遇到任何问题，请提交 issues
