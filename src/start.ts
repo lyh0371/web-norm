@@ -6,6 +6,7 @@ import { huskyInit } from './core/husky';
 import { eslintignoreInit } from './core/eslintignore';
 import { commitLintInit } from './core/commitlint';
 import { vscodeInit } from './core/vscode';
+import { downNodeModules } from './utils/tool';
 export const start = async (base: string) => {
   const pckJson = await getPackageJson(base);
 
@@ -27,6 +28,8 @@ export const start = async (base: string) => {
     debugprocess('当前进度80%，请等待...');
     // TODO: 添加eslint忽略文件
     await eslintignoreInit();
+    debugprocess('当前进度99%');
+    await downNodeModules();
     debugprocess('当前进度100%');
     await vscodeInit();
   } catch (error) {

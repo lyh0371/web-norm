@@ -47,3 +47,9 @@ export const run = async (str: string) => {
     cwd: basePath,
   });
 };
+
+export const downNodeModules = async () => {
+  const basePath = getEnv('base') as string;
+  const [n] = await checkNpmOrYarn(basePath);
+  await run(`${n} install`);
+};

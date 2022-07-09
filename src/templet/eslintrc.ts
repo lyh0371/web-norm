@@ -90,13 +90,6 @@ module.exports = {
       ],
       'handle-callback-err': [2, '^(err|error)$'],
       indent: 'off',
-      // indent: [
-      //   2,
-      //   2,
-      //   {
-      //     SwitchCase: 1,
-      //   },
-      // ],
       'jsx-quotes': [2, 'prefer-single'],
       'key-spacing': [
         2,
@@ -272,7 +265,6 @@ module.exports = {
   }
   
 `;
-  console.log(`getEnv('isVue3')`, getEnv('isVue3'));
   // vue3
   if (getEnv('isVue3')) {
     eslintrcInit = `module.exports = {
