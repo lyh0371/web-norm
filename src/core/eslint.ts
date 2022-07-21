@@ -14,7 +14,7 @@ export const eslintInit = async () => {
       'eslint-friendly-formatter@^4.0.1',
       'eslint-plugin-prettier@^4.0.0',
       'eslint-plugin-vue@^6.2.2',
-      'eslint-plugin-html@^6.2.0"',
+      'eslint-plugin-html@^6.2.0',
       'eslint-config-prettier@^8.5.0',
     ];
   }
