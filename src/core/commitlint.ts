@@ -2,17 +2,17 @@
  * husk 结合 commitlint 提交信息校验
  */
 import { getPackageJson } from '../utils/env';
-import { down, run } from '../utils/tool';
+import { writeInPkg, run } from '../utils/tool';
 import fs from 'fs-extra';
 import { commitLintConfig } from '../templet/commitlint.config';
 import { getpath } from '../utils/path';
 
 const devDependencies = [
-  '@commitlint/cli',
-  '@commitlint/config-angular',
-  'commitizen',
-  'cz-customizable',
-  '@commitlint/cz-commitlint',
+  '@commitlint/cli@^17.0.3',
+  '@commitlint/config-angular@^17.0.3',
+  'commitizen@^4.2.4',
+  'cz-customizable@^6.9.0',
+  '@commitlint/cz-commitlint@^17.0.3',
 ];
 
 const commitMsg = `#!/usr/bin/env sh
@@ -30,7 +30,7 @@ npm run pre-commit
 const commitlintPath = getpath('commitlint.config.js');
 
 export const commitLintInit = async () => {
-  await down(devDependencies, '-D');
+  await writeInPkg(devDependencies);
   await run('npx husky add .husky/commit-msg "npm-run-test"');
   let pkgJson = await getPackageJson();
   pkgJson['config'] = {

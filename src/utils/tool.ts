@@ -1,7 +1,10 @@
 import spawn from 'cross-spawn';
+import fs from 'fs-extra';
 
-import { getEnv } from './env';
+import { getEnv, getPackageJson } from './env';
 import { checkNpmOrYarn } from './check';
+import { getpath } from './path';
+
 import { debugInfo, debugWarning } from './debug';
 export const down = async (runName: string | string[], type: string) => {
   const basePath = getEnv('base') as string;
@@ -15,13 +18,7 @@ export const down = async (runName: string | string[], type: string) => {
   });
 };
 
-export const spawnSync = (
-  n: string,
-  i: string,
-  runItem: string,
-  type: string,
-  basePath: string
-) => {
+export const spawnSync = (n: string, i: string, runItem: string, type: string, basePath: string) => {
   return new Promise((resolve) => {
     spawn.sync(n, [i, runItem, type], {
       stdio: 'pipe',
@@ -31,6 +28,21 @@ export const spawnSync = (
 
     resolve({ success: true });
   });
+};
+
+/**
+ * @name 写入依赖
+ */
+export const writeInPkg = async (devArr: string[], key: string = 'devDependencies') => {
+  let pkg = await getPackageJson();
+  devArr.forEach((item: string) => {
+    // 为了防止安装包里面的名字有@
+    const index = item.lastIndexOf('@');
+    const k = index === -1 ? item : item.slice(0, index);
+    const v = index === -1 ? '' : item.slice(index + 1) || '';
+    pkg[key][k] = v;
+  });
+  fs.writeJsonSync(getpath('package.json'), pkg, { spaces: 2 });
 };
 
 export const run = async (str: string) => {

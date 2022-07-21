@@ -6,7 +6,6 @@ import { huskyInit } from './core/husky';
 import { eslintignoreInit } from './core/eslintignore';
 import { commitLintInit } from './core/commitlint';
 import { vscodeInit } from './core/vscode';
-import { downNodeModules } from './utils/tool';
 export const start = async (base: string) => {
   const pckJson = await getPackageJson(base);
 
@@ -21,6 +20,8 @@ export const start = async (base: string) => {
     await eslintInit();
     debugprocess('当前进度30%，请等待...');
     // TODO: 安装 hucky 并自动生成配置文件
+
+    // return false;
     await huskyInit();
     debugprocess('当前进度50%，请等待...');
     // TODO: 生成.vscode 配置文件 支持自动格式化代码
@@ -28,8 +29,7 @@ export const start = async (base: string) => {
     debugprocess('当前进度80%，请等待...');
     // TODO: 添加eslint忽略文件
     await eslintignoreInit();
-    debugprocess('当前进度99%');
-    await downNodeModules();
+    // await downNodeModules();
     debugprocess('当前进度100%');
     await vscodeInit();
   } catch (error) {
