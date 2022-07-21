@@ -44,7 +44,7 @@ npm run web
 
 ## 验证
 
-运行命令
+代码提交前校验
 
 ```sh
 npm run commit
