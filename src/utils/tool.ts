@@ -33,6 +33,20 @@ export const spawnSync = (n: string, i: string, runItem: string, type: string, b
 /**
  * @name 写入依赖
  */
+
+/**
+ *  @name 睡眠函数
+ *  @param numberMillis -- 要睡眠的毫秒数
+ */
+export const sleep = (numberMillis: number) => {
+  var now = new Date();
+  var exitTime = now.getTime() + numberMillis;
+  while (true) {
+    now = new Date();
+    if (now.getTime() > exitTime) return;
+  }
+};
+
 export const writeInPkg = async (devArr: string[], key: string = 'devDependencies') => {
   let pkg = await getPackageJson();
   devArr.forEach((item: string) => {
@@ -41,6 +55,8 @@ export const writeInPkg = async (devArr: string[], key: string = 'devDependencie
     const k = index === -1 ? item : item.slice(0, index);
     const v = index === -1 ? '' : item.slice(index + 1) || '';
     pkg[key][k] = v;
+    debugInfo(`${item}✅`);
+    sleep(Math.random() * 500);
   });
   fs.writeJsonSync(getpath('package.json'), pkg, { spaces: 2 });
 };

@@ -70,7 +70,7 @@ npm run commit
 
 1. 可以删除依赖（node_modules）重新按照
 
-2. mac 电脑执行 `chmod 700 .husky/*` 让`.husky`文件有读写权限
+2. mac 电脑执行 `npm run postinstallmac` 来设置 husky 的读写权限
 
 ## 说明
 

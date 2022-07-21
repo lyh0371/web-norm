@@ -20,13 +20,13 @@ export const huskyInit = async () => {
   let pkgJson = await getPackageJson();
   pkgJson.scripts['prepare'] = 'husky install';
   pkgJson.scripts['pre-commit'] = 'lint-staged';
+  pkgJson.scripts['postinstallmac'] = 'git config core.hooksPath .husky && chmod 700 .husky/*';
   pkgJson.scripts['eslint'] = 'eslint --cache --max-warnings 0  "{src,mock}/**/*.{vue,ts,js,tsx}" --fix';
   pkgJson['lint-staged'] = {
     '*.{js,ts,vue,jsx,tsx}': ['npm run eslint'],
     '*.{js,jsx,ts,tsx,md,html,css,lees,scss,sass}': 'prettier --write',
   };
   fs.writeJsonSync(getpath('package.json'), pkgJson, { spaces: 2 });
-  debugInfo('初始化 husky');
 
   await run('npm run prepare');
   await run('npx husky add .husky/pre-commit "npm-run-pre-commit"');
