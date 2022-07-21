@@ -70,10 +70,10 @@ npm run commit
 
 1. 可以删除依赖（node_modules）重新按照
 
-2. mac 电脑执行 `chmod 700 .husky/*` 让`.husky`文件有读写权限
+2. mac 电脑执行 `npm run postinstallmac` 来设置 husky 的读写权限
 
 ## 说明
 
-1. 目前 `web-norm` 只支持 vue2 项目，后续会支持 vue3 react 项目
+1. 目前 `web-norm` 只支持 vue（包括 vue3） 后续会支持 react 项目
 
 2. 在使用过程中遇到任何问题，请提交 issues

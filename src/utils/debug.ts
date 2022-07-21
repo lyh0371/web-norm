@@ -16,7 +16,7 @@ const switchDebug = (debug: boolean) => {
  * @param msg 信息
  */
 const debugError = (msg: string) => {
-  debugSwitch && log(chalk.bgBlueBright(`[web-norm]:`) + chalk.red(msg));
+  debugSwitch && log(chalk.hex('#646cff')(`[web-norm]:`) + chalk.red(msg));
   // 如果出错就退出
   process.exit(0);
 };
@@ -27,7 +27,7 @@ const debugError = (msg: string) => {
  * @param msg 信息
  */
 const debugInfo = (msg: string) => {
-  debugSwitch && log(chalk.bgBlueBright(`[web-norm]:`) + chalk.green(msg));
+  debugSwitch && log(chalk.hex('#646cff')(`[web-norm]:`) + chalk.green(msg));
 };
 
 /**
@@ -37,7 +37,7 @@ const debugInfo = (msg: string) => {
  */
 
 const debugprocess = (msg: string) => {
-  debugSwitch && log(chalk.bgBlueBright(`[web-norm]:`) + chalk.yellow(msg));
+  debugSwitch && log(chalk.hex('#646cff')(`[web-norm]:`) + chalk.yellow(msg));
 };
 /**
  * debug warning信息
@@ -45,7 +45,11 @@ const debugprocess = (msg: string) => {
  * @param msg 信息
  */
 const debugWarning = (msg: string) => {
-  log(chalk.bgBlueBright(`[web-norm]:`) + chalk.yellow(msg));
+  log(chalk.hex('#646cff')(`[web-norm]:`) + chalk.yellow(msg));
 };
 
-export { switchDebug, debugInfo, debugError, debugWarning, debugprocess };
+const debugTxt = (msg: string) => {
+  log(chalk.hex('#646cff')(`[web-norm]:`) + chalk.hex('#5c6d82')(msg));
+};
+
+export { switchDebug, debugInfo, debugError, debugWarning, debugprocess, debugTxt };

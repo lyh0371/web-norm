@@ -26,7 +26,6 @@ export const vscodeInit = async () => {
   } else {
     // const nowSetting = await getPackageJson('./vscode/settings.json');
     const nowSetting = fs.readJSON(getpath('./vscode/settings.json'));
-
     vscodeSetting = { ...nowSetting, ...vscodeSetting };
   }
   fs.outputFileSync(
