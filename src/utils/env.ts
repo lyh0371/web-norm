@@ -1,10 +1,11 @@
 import path from 'path';
 import fs from 'fs-extra';
 import { checkVueVersion } from './check';
-const env = {
+export const env = {
   base: '',
   isVue: false,
   isVue3: false,
+  isReact: false,
   isVue2: false,
   isVueCli: false,
   isWebpack: true,
@@ -46,6 +47,10 @@ export const initProjectInfo = async (pckJson: any) => {
     if (checkVueVersion(deps['vue']) === 3) {
       setEnv('isVue3', true);
     }
+  }
+
+  if (deps['react']) {
+    setEnv('isReact', true);
   }
 
   if (deps['eslint']) {

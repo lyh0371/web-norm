@@ -1,5 +1,5 @@
 // 开始分析项目
-import { getPackageJson, initProjectInfo, getEnv } from './utils/env';
+import { getPackageJson, initProjectInfo } from './utils/env';
 import { debugError, debugInfo, debugprocess, debugTxt } from './utils/debug';
 import { eslintInit } from './core/eslint';
 import { huskyInit } from './core/husky';
@@ -11,9 +11,9 @@ export const start = async (base: string) => {
 
   await initProjectInfo(pckJson);
   // TODO: 分析package.json 1.查看项目类型
-  if (!getEnv('isVue')) {
-    debugError('暂不支持除Vue之外的其他版本');
-  }
+  // if (!getEnv('isVue')) {
+  //   debugError('暂不支持除Vue之外的其他版本');
+  // }
   try {
     // TODO: 安装eslint 和 preitter 并自动生成配置文件
     await eslintInit();
