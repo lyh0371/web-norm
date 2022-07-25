@@ -6,8 +6,9 @@ import { getpath } from '../utils/path';
 
 const eslintignore = `
 .prettierrc
-commitlint.config.js
+!commitlint.config.js
 .babel.config.js
+!.umirc.ts
  `;
 export const eslintignoreInit = async () => {
   fs.outputFileSync(getpath('.eslintignore'), eslintignore);
