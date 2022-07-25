@@ -6,6 +6,7 @@ import { huskyInit } from './core/husky';
 import { eslintignoreInit } from './core/eslintignore';
 import { commitLintInit } from './core/commitlint';
 import { vscodeInit } from './core/vscode';
+import { specialFn } from './core/special';
 export const start = async (base: string) => {
   const pckJson = await getPackageJson(base);
 
@@ -24,6 +25,7 @@ export const start = async (base: string) => {
     // TODO: 添加eslint忽略文件
     await eslintignoreInit();
     // await downNodeModules();
+    await specialFn();
     await vscodeInit();
     debugInfo('success!');
     debugprocess('请重新安装依赖！npm install or yarn or ...');

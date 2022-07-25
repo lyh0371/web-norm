@@ -302,7 +302,7 @@ module.exports = {
       ],
       'vue/singleline-html-element-content-newline': 'off',
       'vue/multiline-html-element-content-newline': 'off',
-      'vue/name-property-casing': ['error', 'PascalCase'],
+      'vue/name-property-casing': 'off',
       'vue/no-v-html': 'off',
       ${baseEslint}
     }
