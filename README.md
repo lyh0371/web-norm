@@ -72,7 +72,7 @@ npm run commit
 
 <img src="./src/static/Jun-20-2022-2.gif" width="100%">
 
-## 可能遇到问题
+## 可能遇到问题，详细内容参考这篇文章[可能遇到问题](https://juejin.cn/post/7124196350446534670#heading-4)
 
 - husky 无法触发
 

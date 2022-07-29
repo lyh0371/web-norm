@@ -56,7 +56,6 @@ eqeqeq: 'off',
 ],
 'handle-callback-err': [2, '^(err|error)$'],
 indent: 'off',
-'jsx-quotes': [2, 'prefer-single'],
 'key-spacing': [
   2,
   {
