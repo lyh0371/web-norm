@@ -21,8 +21,7 @@ const commitMsg = `#!/usr/bin/env sh
 npx --no-install commitlint --edit $1
 `;
 
-const preCommit = `
-#!/usr/bin/env sh
+const preCommit = `#!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 npm run pre-commit
 `;
