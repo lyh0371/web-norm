@@ -16,19 +16,7 @@
 
 ## 使用
 
-1. 全局安装
-
-```sh
-npm install web-norm -g | yarn add web-norm -g | pnpm install web-norm -g
-```
-
-运行命令
-
-```sh
-npm run web-norm
-```
-
-2 局部安装
+1 局部安装（推荐使用）
 
 ```sh
 npm install web-norm -D | yarn add web-norm -D | pnpm install web-norm -D
@@ -38,8 +26,20 @@ npm install web-norm -D | yarn add web-norm -D | pnpm install web-norm -D
 
 ```sh
  "scripts": {
-    "web": "web-norm",
+    "web-norm": "web-norm",
   },
+```
+
+2. 全局安装
+
+```sh
+npm install web-norm -g | yarn add web-norm -g | pnpm install web-norm -g
+```
+
+运行命令
+
+```sh
+npm run web-norm
 ```
 
 运行命令
@@ -76,9 +76,10 @@ npm run commit
 
 - husky 无法触发
 
-1. 可以删除依赖（node_modules）重新按照
+1. 项目首先需要被 `git` 管理
 
 2. mac 电脑执行 `npm run postinstallmac` 来设置 husky 的读写权限
+
 
 ## 说明
 
