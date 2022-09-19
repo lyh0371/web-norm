@@ -21,7 +21,7 @@
 - husky 自动装载💯
 - 说吧，你还想要啥...
 
-## 使用
+## 安装
 
 1 局部安装（推荐使用）
 
@@ -43,17 +43,18 @@ npm install web-norm -D | yarn add web-norm -D | pnpm install web-norm -D
 npm install web-norm -g | yarn add web-norm -g | pnpm install web-norm -g
 ```
 
+## 使用
+
 运行命令
+
+```tip
+请确保您的项目使用了git，否则会导致`husky`不生效
+```
 
 ```sh
 npm run web-norm
 ```
 
-运行命令
-
-```sh
-npm run web
-```
 
 <img src="./src/static/loading.png" width="60%">
 
