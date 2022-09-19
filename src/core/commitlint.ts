@@ -13,6 +13,7 @@ const devDependencies = [
   'commitizen@^4.2.4',
   'cz-customizable@^6.9.0',
   '@commitlint/cz-commitlint@^17.0.3',
+  'inquirer@^8.0.0',
 ];
 
 const commitMsg = `#!/usr/bin/env sh

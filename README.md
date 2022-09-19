@@ -1,3 +1,10 @@
+<br />
+<h1 align="center">web-norm</h1>
+<p align="center">
+<a href="https://github.com/lyh0371/web-norm/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/lyh0371/web-norm"></a>
+<a href="https://github.com/lyh0371/web-norm/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/lyh0371/web-norm"></a>
+</p>
+
 ## 初衷
 
 每当接手一个新项目（如果项目中没有配置 eslint husky commitlint）等这些规范的话，就需要自己手动配置一遍，配置多了后我只能来句窝草！😬
@@ -83,6 +90,6 @@ npm run commit
 
 ## 说明
 
-1. 目前 `web-norm` 只支持 vue（包括 vue3） 后续会支持 react 项目
+1.  `web-norm` 只支持 vue（包括 vue3）及 react 项目
 
 2. 在使用过程中遇到任何问题，请提交 issues 😚
