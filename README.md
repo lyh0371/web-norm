@@ -58,6 +58,17 @@ npm run web-norm
 
 <img src="./src/static/loading.png" width="60%">
 
+## 支持配置 
+
+`web-norm` 默认在提交记录上为带表情符号 📦👷📝🌟🐛🚀🌠🔂💎🚨 。如果不喜欢这些表情符号的话可以在用 `web-norm` 初始化项目的时候加上 `--noEmoji` 去掉
+
+```sh
+ "scripts": {
+    "web-norm": "web-norm --noEmoji",
+  },
+```
+
+
 ## 验证
 
 代码提交前校验

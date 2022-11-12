@@ -8,9 +8,9 @@ const cliInit = () => {
   cli
     .command('[root]')
     .alias('alias')
-    .option('-e','--en')
-    .option('-s','--simple')
-    .option('-n','--noEmoji')
+    .option('-n, --en', 'lang')
+    .option('-s,--simple','simple')
+    .option('-n,--noEmoji','noEmoji')
     .action(async (_root, options) => {
       let base: string = options.base;
       const {en,simple,noEmoji} = options;
