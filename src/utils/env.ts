@@ -10,6 +10,9 @@ export const env = {
   isVueCli: false,
   isWebpack: true,
   isEslint: false,
+  isZh: true, // 中英文
+  simple:false, // 是否是简单模式 默认是否
+  noEmoji:false, // 是否不要表情 默认是要
 };
 
 type envKeys = keyof typeof env;

@@ -1,10 +1,11 @@
 /**
  * husk 结合 commitlint 提交信息校验
  */
-import { getPackageJson } from '../utils/env';
+import { getPackageJson,getEnv } from '../utils/env';
 import { writeInPkg, run } from '../utils/tool';
 import fs from 'fs-extra';
 import { commitLintConfig } from '../templet/commitlint.config';
+import {commitLintConfigNoEmoji} from '../templet/commitlint-no-emoji.config';
 import { getpath } from '../utils/path';
 
 const devDependencies = [
@@ -45,7 +46,8 @@ export const commitLintInit = async () => {
     // 删除
     fs.removeSync(commitlintPath);
   }
-  fs.outputFileSync(commitlintPath, commitLintConfig);
+  const _commitLintConfig = getEnv('noEmoji')?commitLintConfigNoEmoji:commitLintConfig
+  fs.outputFileSync(commitlintPath, _commitLintConfig);
   fs.outputFileSync(getpath('./.husky/commit-msg'), commitMsg);
   fs.outputFileSync(getpath('./.husky/pre-commit'), preCommit);
 };
