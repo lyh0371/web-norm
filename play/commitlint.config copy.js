@@ -9,7 +9,7 @@ module.exports = {
   rules: {
     'type-case': [0],
     'type-empty': [2, 'never'],
-    'type-enum': [2, 'always', ['build', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor', 'revert', 'style', 'test']],
+    'type-enum': [2, 'always', ['📦build', '👷ci', '📝docs', '🌟feat', '🐛fix', '🚀perf', '🌠refactor', '🔂revert', '💎style', '🚨test']],
     'scope-empty': [2, 'never'],
     'subject-empty': [2, 'never']
   },
@@ -28,53 +28,53 @@ module.exports = {
       type: {
         description: '请选择提交类型',
         enum: {
-          feat: {
+          '🌟feat': {
             description: '增加新功能',
             title: 'Features',
             emoji: '🌟'
           },
-          fix: {
+          '🐛fix': {
             description: '修复bug',
             title: 'Bug Fixes',
             emoji: '🐛'
           },
-          docs: {
+          '📝docs': {
             description: '修改文档',
             title: 'Documentation',
             emoji: '📝'
           },
-          style: {
+          '💎style': {
             description: '样式修改不影响逻辑',
             title: 'Styles',
             emoji: '💎'
           },
-          refactor: {
+          '🌠refactor': {
             description: '功能/代码重构',
             title: 'Code Refactoring',
             emoji: '🌠'
           },
-          perf: {
+          '🚀perf': {
             description: '性能优化',
             title: 'Performance Improvements',
             emoji: '🚀'
           },
-          test: {
+          '🚨test': {
             description: '增删测试',
             title: 'Tests',
             emoji: '🚨'
           },
-          build: {
+          '📦build': {
             description: '打包',
             title: '打包',
             emoji: '📦'
           },
-          ci: {
+          '👷ci': {
             description: 'CI部署',
             title: 'Continuous Integrations',
             emoji: '⚙️'
           },
 
-          revert: {
+          '🔂revert': {
             description: '版本回退',
             title: 'Reverts',
             emoji: '🔂'

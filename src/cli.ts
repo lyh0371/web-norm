@@ -4,16 +4,24 @@ import { start } from './start';
 const cli = cac('web-norm');
 import { setEnv } from './utils/env';
 const cliInit = () => {
+  
   cli
     .command('[root]')
     .alias('alias')
+    .option('-e','--en')
+    .option('-s','--simple')
+    .option('-n','--noEmoji')
     .action(async (_root, options) => {
       let base: string = options.base;
+      const {en,simple,noEmoji} = options;
+      en && setEnv('isZh',true)
+      simple && setEnv('simple',true)
+      noEmoji && setEnv('noEmoji',true)
       if (!base) {
         // 项目的最终路径
         base = process.cwd();
       }
-      setEnv('base', base);
+      setEnv('base', base);    
       await start(base);
     });
 

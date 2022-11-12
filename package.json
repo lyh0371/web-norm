@@ -12,7 +12,9 @@
     "version": "ts-node build/version.ts",
     "commit": "npm run version && git add . && git-cz ",
     "prepare": "husky install",
-    "release": "rm -rf dist && tsc && ts-node build/index.ts"
+    "release": "rm -rf dist && tsc && ts-node build/index.ts",
+    "w":"web-norm1 --en"
+   
   },
   "bin": {
     "web-norm": "./dist/index.js"
@@ -52,7 +54,13 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.32.1",
     "ts-node": "^10.7.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "eslint": "^7.25.0",
+    "prettier": "^2.7.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-config-prettier": "^8.5.0"
   },
   "dependencies": {
     "cac": "^6.7.12",
