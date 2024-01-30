@@ -1,6 +1,6 @@
 {
   "name": "web-norm",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "前端项目规范一键安装",
   "main": "dist/index.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "tsc": "tsc",
     "build": "rm -rf dist && tsc && ts-node build/index.ts",
     "serve": "ts-node ./index.ts",
+    "serve2": "ts-node ./index.ts --especial",
     "tsc-init": "tsc --init",
     "version": "ts-node build/version.ts",
     "commit": "git add . && git-cz",

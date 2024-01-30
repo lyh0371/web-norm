@@ -5,6 +5,7 @@ import { prettierrcInit } from '../templet/prettierrc'
 import { eslintrcFn } from '../templet/eslintrc'
 import { getpath } from '../utils/path'
 import { teepEslintConfig } from '../especial'
+import { debugError } from '../utils/debug'
 const baseDep = [
   'eslint@^7.25.0',
   'prettier@^2.7.1',
@@ -32,17 +33,14 @@ export const eslintInit = async () => {
 
   if (getEnv('merge')) {
     // 合并操作
-
     const oldEslintConfig = await getEslintrc()
     if (oldEslintConfig) {
       // 存在旧版本eslint
-      //  特有配置
       const nEslint = getEnv('especial') ? teepEslintConfig.rules : {}
       const mEslint = meageEslint(oldEslintConfig, nEslint)
       const eslintToString = JSON.stringify(mEslint, null, 2)
       writeEslintConfig(`module.exports = ${eslintToString}`)
     }
-
     return false
   }
 
@@ -50,7 +48,11 @@ export const eslintInit = async () => {
   // await down(devDependencies, '-D');
   // writeInPkg 只是把依赖写入到package中
   await writeInPkg(devDependencies, 'devDependencies')
-  writeEslintConfig(eslintrcFn())
+
+  writeEslintConfig(eslintrcFn(getEnv('especial') as boolean))
+  // 合并 执行一次 eslint 把重复的对象合并
+  const eslint2 = await getEslintrc()
+  writeEslintConfig(`module.exports = ${JSON.stringify(eslint2, null, 2)}`)
   async function writeEslintConfig(eslintConfig: string) {
     fs.outputFileSync(getpath('./.eslintrc.js'), eslintConfig)
     fs.outputFileSync(getpath('./.prettierrc'), prettierrcInit)
@@ -63,8 +65,15 @@ export const eslintInit = async () => {
 }
 
 function meageEslint(oldEslintConfig: Obj, newEslintRules: Obj): Obj {
-  return {
-    ...(oldEslintConfig?.rules || {}),
-    ...newEslintRules
+  const { rules } = oldEslintConfig
+  if (oldEslintConfig && rules) {
+    oldEslintConfig.rules = {
+      ...oldEslintConfig.rules,
+      ...newEslintRules
+    }
+    return oldEslintConfig
+  } else {
+    debugError('.eslintrc格式有误，请删除后再运行命令')
+    return {}
   }
 }
