@@ -10,6 +10,8 @@ export const env = {
   isVueCli: false,
   isWebpack: true,
   isEslint: false,
+  especial: false,
+  merge: false, // 是否覆盖原有eslint 默认覆盖
   isZh: true, // 中英文
   simple: false, // 是否是简单模式 默认是否
   noEmoji: false // 是否不要表情 默认是要
@@ -31,13 +33,43 @@ export const getEnv = (key: envKeys) => {
 }
 
 /**
+ * @name 检测是否包含指定文件
+ *
+ */
+
+export const existsSync = (fileName: string, base: string = getEnv('base') as string) => {
+  const file = path.resolve(base, fileName)
+  return fs.existsSync(file)
+}
+
+/**
+ * @name 获取指定文件，并转化为json
+ *
+ */
+
+export const getFiletoJson = async (fileName: string, base: string = getEnv('base') as string) => {
+  const file = path.resolve(base, fileName)
+  const res = fs.existsSync(file)
+  if (!res) return false
+  const json = fs.readJSON(file)
+  return json
+}
+/**
  * @name 把package.json转化为json
  */
 export const getPackageJson = async (base: string = getEnv('base') as string) => {
-  // if (!(await pathExists('package.json'))) process.exit(0);
-  const file = path.resolve(base, 'package.json')
-  const json = fs.readJSON(file)
-  return json
+  return getFiletoJson('package.json', base)
+}
+
+/**
+ * @name 获取eslintrc
+ */
+export const getEslintrc = async (base: string = getEnv('base') as string) => {
+  const file = path.resolve(base, '.eslintrc.js')
+  const res = fs.existsSync(file)
+  if (!res) return false
+  const eslintStr = await fs.readFile(file, 'utf8')
+  return eval(eslintStr)
 }
 
 export const initProjectInfo = async (pckJson: any) => {
