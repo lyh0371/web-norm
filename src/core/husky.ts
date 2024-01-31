@@ -25,7 +25,7 @@ export const huskyInit = async () => {
   pkgJson.scripts['prettiercheck'] = 'prettier --check src/**/*.{vue,ts,js,tsx,jsx}'
   pkgJson.scripts['eslint'] = 'eslint --cache --max-warnings 0  "{src,mock}/**/*.{vue,ts,js,tsx}" --fix'
   pkgJson['lint-staged'] = {
-    '*.{js,ts,vue,jsx,tsx}': ['npm run eslint'],
+    '*.{js,ts,vue,jsx,tsx}': ['eslint --cache --fix'],
     '*.{js,jsx,ts,tsx,md,html,css,lees,scss,sass}': 'prettier --write'
   }
   fs.writeJsonSync(getpath('package.json'), pkgJson, { spaces: 2 })
