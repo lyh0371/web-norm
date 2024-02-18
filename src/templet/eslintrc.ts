@@ -1,6 +1,14 @@
-import { getEnv } from '../utils/env';
+import { getEnv } from '../utils/env'
+import { teepEslintConfig } from '../especial'
 
-const baseEslint = `
+function formatObject(obj: Object) {
+  const objStr = JSON.stringify(obj, null, 2)
+  return objStr.slice(1, -1).replace(/"/g, "'")
+}
+const especialRules = formatObject(teepEslintConfig.rules)
+
+function getBaseEslint(especial: boolean = false) {
+  return `
 'prettier/prettier': 'error',
 'accessor-pairs': 2,
 'arrow-spacing': [
@@ -46,7 +54,7 @@ camelcase: [
 curly: [2, 'multi-line'],
 'dot-location': [2, 'property'],
 'eol-last': 2,
-eqeqeq: 'off',
+eqeqeq: 2,
 'generator-star-spacing': [
   2,
   {
@@ -163,7 +171,8 @@ indent: 'off',
   2,
   {
     vars: 'all',
-    args: 'none'
+    args: 'none',
+    varsIgnorePattern: '^_'
   }
 ],
 'no-useless-call': 2,
@@ -225,10 +234,12 @@ yoda: [2, 'never'],
     objectsInObjects: false
   }
 ],
-'array-bracket-spacing': [2, 'never']
-`;
+'array-bracket-spacing': [2, 'never'],
+${especial ? especialRules : ''}
+`
+}
 
-export const eslintrcFn = () => {
+export const eslintrcFn = (especial?: boolean) => {
   // vue2
   let eslintrcInit = `
 module.exports = {
@@ -263,11 +274,11 @@ module.exports = {
       'vue/multiline-html-element-content-newline': 'off',
       'vue/name-property-casing': ['error', 'PascalCase'],
       'vue/no-v-html': 'off',
-      ${baseEslint}
+      ${getBaseEslint(especial)}
     } 
   }
   
-`;
+`
   // vue3
   if (getEnv('isVue3')) {
     eslintrcInit = `
@@ -303,10 +314,10 @@ module.exports = {
       'vue/multiline-html-element-content-newline': 'off',
       'vue/name-property-casing': 'off',
       'vue/no-v-html': 'off',
-      ${baseEslint}
+      ${getBaseEslint(especial)}
     }
   }
-  `;
+  `
   }
   if (getEnv('isReact')) {
     eslintrcInit = `
@@ -326,10 +337,10 @@ module.exports = {
   extends: ['plugin:react/recommended', 'plugin:@typescript-eslint/recommended', 'eslint:recommended', 'plugin:prettier/recommended'],
     rules: {
       'react/react-in-jsx-scope': 0,
-      ${baseEslint}
+      ${getBaseEslint(especial)}
     }
   }
-  `;
+  `
   }
-  return eslintrcInit;
-};
+  return eslintrcInit
+}
