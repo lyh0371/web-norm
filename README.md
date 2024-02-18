@@ -7,9 +7,9 @@
 
 ## 其他性感的开源项目 🔥🔥
 
-[vv-react-table(虚拟列表解决方案)](https://github.com/lyh0371/vv-react-table) 欢迎使用 😚
-[web-guide(与框架无关的前端动态新手引导插件)](https://github.com/lyh0371/web-guide)欢迎使用 😚
-[sp-ui(基于 vue3+vite2 的组件库-小玩意)](https://github.com/lyh0371/sp-ui)欢迎把玩 😚
+- [vv-react-table(虚拟列表解决方案)](https://github.com/lyh0371/vv-react-table) 欢迎使用 😚
+- [web-guide(与框架无关的前端动态新手引导插件)](https://github.com/lyh0371/web-guide)欢迎使用 😚
+- [sp-ui(基于 vue3+vite2 的组件库-小玩意)](https://github.com/lyh0371/sp-ui)欢迎把玩 😚
 
 ## 初衷
 
