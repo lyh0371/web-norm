@@ -32,7 +32,7 @@ export const start = async (base: string) => {
     debugTxt(`
 
     😎 请确保您吃饭的家伙是vscode
-    😘 推荐安装vscode插件 eslint、prettier(这不是广告)
+    😘 推荐安装vscode插件 eslint、prettier-eslint、prettier(这不是广告)
     😫 一脸懵逼？请前往 https://github.com/lyh0371/web-norm
     `)
     // debugTxt(``);

@@ -17,7 +17,7 @@ export const huskyInit = async () => {
   // 安装依赖
   await writeInPkg(devDependencies)
   // 更改package
-  let pkgJson = await getPackageJson()
+  const pkgJson = await getPackageJson()
   pkgJson.scripts['prepare'] = 'husky install'
   pkgJson.scripts['pre-commit'] = 'lint-staged'
   pkgJson.scripts['postinstallmac'] = 'git config core.hooksPath .husky && chmod 700 .husky/*'

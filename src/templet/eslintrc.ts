@@ -54,7 +54,7 @@ camelcase: [
 curly: [2, 'multi-line'],
 'dot-location': [2, 'property'],
 'eol-last': 2,
-eqeqeq: 'off',
+eqeqeq: 2,
 'generator-star-spacing': [
   2,
   {
@@ -171,7 +171,8 @@ indent: 'off',
   2,
   {
     vars: 'all',
-    args: 'none'
+    args: 'none',
+    varsIgnorePattern: '^_'
   }
 ],
 'no-useless-call': 2,

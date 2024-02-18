@@ -22,10 +22,10 @@ interface Obj {
 export const eslintInit = async () => {
   let devDependencies: string[] = baseDep
   if (getEnv('isVue2')) {
-    devDependencies = [...baseDep, 'eslint-plugin-vue@^6.2.2']
+    devDependencies = [...baseDep, 'eslint-plugin-vue@^9.21.1']
   }
   if (getEnv('isVue3')) {
-    devDependencies = [...baseDep, 'eslint-plugin-vue@^9.2.0', '@typescript-eslint/parser@^5.30.7']
+    devDependencies = [...baseDep, 'eslint-plugin-vue@^9.21.1', '@typescript-eslint/parser@^5.30.7']
   }
   if (getEnv('isReact')) {
     devDependencies = [...baseDep, 'eslint-plugin-react@^7.30.1', 'eslint-plugin-jsx-a11y@^6.6.1', '@typescript-eslint/parser@^5.30.7', '@typescript-eslint/eslint-plugin@5.30.7']
