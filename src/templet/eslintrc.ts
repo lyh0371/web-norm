@@ -1,12 +1,10 @@
 import { getEnv } from '../utils/env'
 import { teepEslintConfig } from '../especial'
-
 function formatObject(obj: Object) {
   const objStr = JSON.stringify(obj, null, 2)
   return objStr.slice(1, -1).replace(/"/g, "'")
 }
 const especialRules = formatObject(teepEslintConfig.rules)
-
 function getBaseEslint(especial: boolean = false) {
   return `
 'prettier/prettier': 'error',
