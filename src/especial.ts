@@ -5,12 +5,12 @@ export const teepEslintConfig = {
     'max-lines': [
       'error',
       {
-        max: 1000,
+        max: 1500,
         skipBlankLines: true,
         skipComments: true
       }
     ],
-    complexity: ['error', 20],
+    complexity: ['error', 15],
     eqeqeq: 2
   }
 }
