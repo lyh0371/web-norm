@@ -1,12 +1,10 @@
 import { getEnv } from '../utils/env'
 import { teepEslintConfig } from '../especial'
-
 function formatObject(obj: Object) {
   const objStr = JSON.stringify(obj, null, 2)
   return objStr.slice(1, -1).replace(/"/g, "'")
 }
 const especialRules = formatObject(teepEslintConfig.rules)
-
 function getBaseEslint(especial: boolean = false) {
   return `
 'prettier/prettier': 'error',
@@ -240,14 +238,43 @@ ${especial ? especialRules : ''}
 }
 
 export const eslintrcFn = (especial?: boolean) => {
-  // vue2
+  // 其他
   let eslintrcInit = `
 module.exports = {
     root: true,
     parserOptions: {
       ecmaVersion: 11,
       parser: 'babel-eslint',
-      sourceType: 'module'
+      sourceType: 'module',
+      "ecmaFeatures": {
+       "legacyDecorators": true
+     }
+    },
+    env: {
+      browser: true,
+      node: true,
+      es6: true
+    },
+    plugins: ['prettier'],
+    extends: [ 'eslint:recommended', 'plugin:prettier/recommended'],
+    rules: {
+      ${getBaseEslint(especial)}
+    } 
+  }
+  
+`
+  // vue2
+  if (getEnv('isVue2')) {
+    eslintrcInit = `
+module.exports = {
+    root: true,
+    parserOptions: {
+      ecmaVersion: 11,
+      parser: 'babel-eslint',
+      sourceType: 'module',
+      "ecmaFeatures": {
+       "legacyDecorators": true
+     }
     },
     env: {
       browser: true,
@@ -276,18 +303,20 @@ module.exports = {
       'vue/no-v-html': 'off',
       ${getBaseEslint(especial)}
     } 
+  }`
   }
-  
-`
-  // vue3
   if (getEnv('isVue3')) {
+    // vue3
     eslintrcInit = `
 module.exports = {
     root: true,
     parserOptions: {
       ecmaVersion: 11,
       sourceType: 'module',
-      parser: '@typescript-eslint/parser'
+      parser: '@typescript-eslint/parser',
+       "ecmaFeatures": {
+       "legacyDecorators": true
+     }
     },
     env: {
       browser: true,
@@ -326,7 +355,10 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 11,
     sourceType: 'module',
-    parser: '@typescript-eslint/parser'
+    parser: '@typescript-eslint/parser',
+     "ecmaFeatures": {
+       "legacyDecorators": true
+     }
   },
   env: {
     browser: true,
